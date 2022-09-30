@@ -24,7 +24,7 @@
 ![](https://github.com/Xavier-MaYiMing/Grey-Wolf-Optimizer/blob/main/Convergence%20curve.png)
 
 $$
-\text{min}\ &f(x)=0.6224x_1x_3x_4+1.7781x_2x_3^2+3.1661x_1^2x_4+19.84x_1^2x_3,\\
+\text{min}\ f(x)=0.6224x_1x_3x_4+1.7781x_2x_3^2+3.1661x_1^2x_4+19.84x_1^2x_3,\\
 \text{s.t.} &-x_1+0.0193x_3\leq0,\\
 &-x_3+0.0095x_3\leq0,\\
 &-\pi x_3^2x_4-\frac{4}{3}\pi x_3^3+1296000\leq0,\\
