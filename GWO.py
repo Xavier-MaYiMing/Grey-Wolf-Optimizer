@@ -49,6 +49,14 @@ def boundary_check(x, lb, ub, dim):
 
 
 def main(pop, lb, ub, iter):
+    """
+    The main function of GWO
+    :param pop: the number of wolves
+    :param lb: the lower bound (list)
+    :param ub: the upper bound (list)
+    :param iter: the iteration number
+    :return:
+    """
     # Step 1. Initialization
     dim = len(ub)  # dimension
     pos = []
@@ -70,7 +78,7 @@ def main(pop, lb, ub, iter):
 
     # Step 2. The main loop
     for t in range(iter):
-        a = 2 - 2 * t / (iter + 1)
+        a = 2 - 2 * (t + 1) / iter
         for i in range(pop):
             for j in range(dim):
                 # Calculate the distance between alpha
@@ -102,8 +110,7 @@ def main(pop, lb, ub, iter):
             # Check the boundary
             pos[i] = boundary_check(pos[i], lb, ub, dim)
 
-        # Calculate the score
-        for i in range(pop):
+            # Update the score
             score[i] = obj(pos[i])
             if score[i] < alpha_score:
                 alpha_score = score[i]
@@ -121,7 +128,7 @@ def main(pop, lb, ub, iter):
     x = [i for i in range(iter + 1)]
     plt.figure()
     plt.plot(x, iter_best, linewidth=2, color='blue')
-    plt.ticklabel_format(style='sci', scilimits=(0, 0))
+    plt.ticklabel_format(scilimits=(0, 0))
     plt.xlabel('Iteration number')
     plt.ylabel('So-far best value')
     plt.show()
@@ -130,8 +137,8 @@ def main(pop, lb, ub, iter):
 
 
 if __name__ == '__main__':
-    pop = 200
+    pop = 500
     lb = [0, 0, 10, 10]
-    ub = [99, 99, 200, 200]
-    iter = 100
+    ub = [100, 100, 100, 100]
+    iter = 50
     print(main(pop, lb, ub, iter))
