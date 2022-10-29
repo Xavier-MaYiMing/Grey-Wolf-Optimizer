@@ -69,11 +69,11 @@ def main(pop, lb, ub, iter):
         score.append(temp_score)
     sorted_score = sorted(score)
     alpha_score = sorted_score[0]
-    alpha_pos = pos[score.index(alpha_score)]
+    alpha_pos = pos[score.index(alpha_score)].copy()
     beta_score = sorted_score[1]
-    beta_pos = pos[score.index(beta_score)]
+    beta_pos = pos[score.index(beta_score)].copy()
     delta_score = sorted_score[2]
-    delta_pos = pos[score.index(delta_score)]
+    delta_pos = pos[score.index(delta_score)].copy()
     iter_best.append(alpha_score)
 
     # Step 2. The main loop
@@ -114,13 +114,13 @@ def main(pop, lb, ub, iter):
             score[i] = obj(pos[i])
             if score[i] < alpha_score:
                 alpha_score = score[i]
-                alpha_pos = pos[i]
+                alpha_pos = pos[i].copy()
             elif score[i] < beta_score:
                 beta_score = score[i]
-                beta_pos = pos[i]
+                beta_pos = pos[i].copy()
             elif score[i] < delta_score:
                 delta_score = score[i]
-                delta_pos = pos[i]
+                delta_pos = pos[i].copy()
 
         iter_best.append(alpha_score)
 
@@ -137,8 +137,8 @@ def main(pop, lb, ub, iter):
 
 
 if __name__ == '__main__':
-    pop = 500
+    pop = 10
     lb = [0, 0, 10, 10]
     ub = [100, 100, 100, 100]
-    iter = 50
+    iter = 1000
     print(main(pop, lb, ub, iter))
